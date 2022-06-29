@@ -2,6 +2,7 @@ import router, { useRouter } from "next/router";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { destroyCookie, parseCookies, setCookie } from "nookies";
+import { toast } from "react-toastify";
 
 type User = {
   email: string;
@@ -85,8 +86,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
+      toast.success("Logado com sucesso!");
       router.push("/dashboard");
     } catch (error) {
+      switch (error.response.data.code) {
+        case "incorrect.credentials":
+          toast.error("E-mail, ou senha incorreta!");
+          break;
+        case "user.not.found":
+          toast.error("Usuário não encontrado...");
+          break;
+
+        default:
+          toast.error(error.response.data.message);
+          break;
+      }
       console.log(error);
     }
   }

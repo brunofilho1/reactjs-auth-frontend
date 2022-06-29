@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { parseCookies, setCookie } from "nookies";
+import { toast } from "react-toastify";
 import { signOut } from "../contexts/AuthContext";
 
 let cookies = parseCookies();

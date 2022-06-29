@@ -29,12 +29,14 @@ const Home: NextPage = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail"
+          required
         />
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Senha"
+          required
         />
         <button type="submit">Entrar</button>
       </form>

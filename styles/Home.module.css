@@ -8,6 +8,17 @@
   color: slateblue;
 }
 
+.container div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
 .container form {
   display: flex;
   flex-direction: column;
@@ -38,6 +49,14 @@
 
   color: #fff;
   background-color: slateblue;
+
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: 0.2s;
+}
+
+.container form button:hover {
+  background-color: rgb(86, 73, 170);
 }
 
 .container form input::placeholder {
