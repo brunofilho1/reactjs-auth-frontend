@@ -29,6 +29,7 @@ export function signOut() {
   destroyCookie(undefined, "nextauth.token");
   destroyCookie(undefined, "nextauth.refreshToken");
 
+  toast.info("Deslogado com sucesso ;)");
   router.push("/");
 }
 

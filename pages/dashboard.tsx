@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import { AuthContext } from "../contexts/AuthContext";
+import { AuthContext, signOut } from "../contexts/AuthContext";
 import { api } from "../services/api";
 import styles from "../styles/Home.module.css";
 
@@ -32,6 +32,7 @@ export default function Dashboard() {
         <p>
           Seja bem vindo, <b>{user?.email}</b>!
         </p>
+        <button onClick={() => signOut()}>Sair</button>
       </div>
     </div>
   );

@@ -19,6 +19,26 @@
   background-color: #fff;
 }
 
+.container div button {
+  width: 400px;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  color: #fff;
+  background-color: slateblue;
+
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: 0.2s;
+}
+
+.container div button:hover {
+  background-color: rgb(86, 73, 170);
+}
+
 .container form {
   display: flex;
   flex-direction: column;
