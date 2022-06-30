@@ -1,6 +1,8 @@
+import { destroyCookie } from "nookies";
 import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthContext, signOut } from "../contexts/AuthContext";
+import { AuthTokenError } from "../errors/AuthTokenError";
 import { setupAuthClient } from "../services/api";
 import { api } from "../services/apiClient";
 import styles from "../styles/Home.module.css";
@@ -43,8 +45,7 @@ export default function Dashboard() {
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupAuthClient(ctx);
   const response = await apiClient.get("/me");
-
-  console.log(response.data);
+  console.log(response);
 
   return {
     props: {},
