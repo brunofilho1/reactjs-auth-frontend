@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AuthContext, signOut } from "../contexts/AuthContext";
 import { AuthTokenError } from "../errors/AuthTokenError";
+import { useCan } from "../hooks/useCan";
 import { setupAuthClient } from "../services/api";
 import { api } from "../services/apiClient";
 import styles from "../styles/Home.module.css";
@@ -10,6 +11,10 @@ import { withSSRAuth } from "../utils/withSSRAuth";
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext);
+
+  const userCanSeeMetrics = useCan({
+    permissions: ["metrics.list"],
+  });
 
   useEffect(() => {
     api
@@ -36,6 +41,11 @@ export default function Dashboard() {
         <p>
           Seja bem vindo, <b>{user?.email}</b>!
         </p>
+        {userCanSeeMetrics ? (
+          <p>Você pode acessar as Métricas. 😀</p>
+        ) : (
+          <p>Você NÃO pode acessar as Métricas! 😡</p>
+        )}
         <button onClick={() => signOut()}>Sair</button>
       </div>
     </div>
