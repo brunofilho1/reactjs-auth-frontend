@@ -3,7 +3,7 @@ import { destroyCookie } from "nookies";
 import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserCanSee } from "../components/UserCanSee";
-import { AuthContext, signOut } from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 import { AuthTokenError } from "../errors/AuthTokenError";
 import { useCan } from "../hooks/useCan";
 import { setupAuthClient } from "../services/api";
@@ -12,7 +12,7 @@ import styles from "../styles/Home.module.css";
 import { withSSRAuth } from "../utils/withSSRAuth";
 
 export default function Dashboard() {
-  const { user } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
 
   useEffect(() => {
     api
